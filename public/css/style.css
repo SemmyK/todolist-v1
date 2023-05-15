@@ -52,8 +52,8 @@ input[type='text']:focus {
 	label {
 		font-size: 1rem;
 		display: block;
-		width: 100vw !important;
-		padding: 1em !important;
+		width: 100% !important;
+		box-sizing: border-box !important;
 	}
 	#todo {
 		padding: 0;
@@ -61,6 +61,7 @@ input[type='text']:focus {
 		display: block;
 	}
 	button {
-		width: 100% !important;
+		width: 90% !important;
+		margin: 2em 1em;
 	}
 }
