@@ -55,4 +55,8 @@ input[type='text']:focus {
 		width: 100vw !important;
 		padding: 1em !important;
 	}
+	#todo {
+		padding: 0;
+		width: 100vw;
+	}
 }
