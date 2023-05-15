@@ -3,44 +3,12 @@ require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const { MongoClient, ServerApiVersion } = require('mongodb')
+
 const date = require(__dirname + '/getDateString')
 const PORT = process.env.PORT || 3000
 
 //connect to atlas DB
 const uri = process.env.MONGO_URI
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-	serverApi: {
-		version: ServerApiVersion.v1,
-		strict: true,
-		deprecationErrors: true,
-	},
-})
-async function run() {
-	try {
-		// Connect the client to the server	(optional starting in v4.7)
-		await client.connect(err => {
-			if (err) {
-				console.error(err)
-				return false
-			}
-			// connection to mongo is successful, listen for requests
-			app.listen(PORT, () => {
-				console.log('listening for requests')
-			})
-		})
-		// Send a ping to confirm a successful connection
-		await client.db('admin').command({ ping: 1 })
-		console.log(
-			'Pinged your deployment. You successfully connected to MongoDB!'
-		)
-	} finally {
-		// Ensures that the client will close when you finish/error
-		await client.close()
-	}
-}
-run().catch(console.dir)
 
 const app = express()
 app.use(express.static('./public'))
@@ -52,9 +20,14 @@ let day = date()
 let toDoTitle = ''
 
 //create MongoDB database
-main().catch(err => console.log(err))
-async function main() {
-	await mongoose.connect(process.env.MONGO_URI)
+const connectDB = async () => {
+	try {
+		const conn = await mongoose.connect(process.env.MONGO_URI)
+		console.log(`MongoDB Connected: ${conn.connection.host}`)
+	} catch (error) {
+		console.log(error)
+		process.exit(1)
+	}
 }
 
 //create a SCHEMA that sets out the fields each document will have and their datatypes
@@ -281,6 +254,9 @@ app.post('/delete', (req, res) => {
 	}
 })
 
-// app.listen(port, () => {
-// 	console.log(`Server running at ${port}`)
-// })
+//Connect to the database before listening
+connectDB().then(() => {
+	app.listen(PORT, () => {
+		console.log('listening for requests')
+	})
+})
