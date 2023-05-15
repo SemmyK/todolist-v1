@@ -54,7 +54,7 @@ let toDoTitle = ''
 //create MongoDB database
 main().catch(err => console.log(err))
 async function main() {
-	await mongoose.connect(uri)
+	await mongoose.connect(process.env.MONGO_URI)
 }
 
 //create a SCHEMA that sets out the fields each document will have and their datatypes
