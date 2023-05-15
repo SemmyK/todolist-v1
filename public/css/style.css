@@ -70,6 +70,7 @@ input[type='text']:focus {
 		width: 100% !important;
 		box-sizing: border-box !important;
 		padding: 1em 0 !important;
+		margin: 1em auto !important;
 	}
 
 	#todo-form span {
