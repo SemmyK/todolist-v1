@@ -1,0 +1,26 @@
+<!--single task-->
+<form action="/delete" method="post" class="border-0">
+	<label class="list-group-item d-flex gap-3">
+		<input
+			class="form-check-input flex-shrink-0"
+			type="checkbox"
+			name="checkbox"
+			value="<%= id %>"
+			style="font-size: 1.375em"
+			onchange="this.form.submit();"
+		/>
+		<span class="pt-1 form-checked-content">
+			<strong><%= taskText %></strong>
+			<small class="d-block text-body-secondary">
+				<img
+					src="/assets/calendar-event.svg"
+					class="pb-1"
+					alt="calendar-event"
+				/>
+				<%= taskTime %>
+			</small>
+		</span>
+	</label>
+
+	<input type="hidden" name="listTitle" value="<%= listTitle %>" />
+</form>

@@ -1,0 +1,40 @@
+main {
+	background-image: -webkit-linear-gradient(
+		65deg,
+		royalblue 50%,
+		#e4e9fd 50%
+	) !important;
+	height: 100vh;
+}
+
+main h1 {
+	margin: 1em auto;
+	color: royalblue;
+}
+#todo {
+	margin: 2em auto;
+}
+
+#todo-form {
+	height: 15vh !important;
+	width: 80% !important;
+}
+#tasks {
+	width: 80% !important;
+}
+
+input:checked + span {
+	text-decoration: line-through;
+	text-decoration-color: royalblue;
+	text-decoration-thickness: 4px;
+}
+
+.shadow {
+	border-radius: 5px;
+	box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+input[type='text']:focus {
+	outline: none;
+	box-shadow: inset 0 -3px 0 0 royalblue;
+}

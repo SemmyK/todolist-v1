@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('head', {title: 'To Do List', css: '/css/style.css'}) %>
+	<body>
+		<main class="container-fluid pt-5">
+			<h1 class="text-center text-primary py-2 shadow w-50">
+				<%= listTitle %> To Do List <br />
+				<%= dayName %>
+			</h1>
+
+			<div
+				id="todo"
+				class="d-flex flex-column p-4 gap-4 py-md-5 align-items-center justify-content-center shadow w-50"
+			>
+				<div class="list-group" id="tasks">
+					<% for( let i = 0; i < tasks.length; i++ ) { %>
+						<% tasks.sort(
+					(a, b) => a.taskName[0]-b.taskName[0]
+				) %>
+						<%-
+					include('singleTask', {taskText: tasks[i].taskName, taskTime:
+					tasks[i].taskTime, id: tasks[i]._id, listTitle: listTitle}) %> <% } %>
+				</div>
+				<!--form for user input of the task-->
+				<form
+					action="/"
+					method="POST"
+					id="todo-form"
+					class="my-3 rounded-1 w-50"
+				>
+					<label
+						class="list-group-item h-75 d-flex justify-content-between align-items-center bg-body-tertiary py-2"
+					>
+						<span class="px-2 d-block">
+							<img
+								src="/assets/list-check.svg"
+								class="p-0"
+								alt="calendar-event"
+							/>
+						</span>
+						<div
+							class="w-75 m-0 p-0 d-flex flex-column h-100 justify-content-center align-items-left"
+						>
+							<input
+								class="bg-body-tertiary border-0 w-75 h-50"
+								name="newTask"
+								type="text"
+								placeholder="Add new task..."
+								autocomplete="off"
+								required
+							/>
+							<input
+								class="bg-body-tertiary border-0 w-75 h-50"
+								name="newTime"
+								type="text"
+								placeholder="Add time for task...(optional)"
+								autocomplete="off"
+							/>
+						</div>
+
+						<button
+							class="btn btn-outline-primary rounded-1 h-50 w-25"
+							type="submit"
+							name="list"
+							value="<%= listTitle %>"
+						>
+							Add
+						</button>
+					</label>
+				</form>
+				<div class="w-50 mx-auto text-center">
+					<a
+						<% if(listTitle==='Home') { %>
+						href='/work'
+							<% } else { %>
+								href='/'
+							<% } %>>
+							<button
+								class="btn btn-light text-primary rounded-1 h-50"
+								name="list"
+								value="<%= listTitle %>">
+								Go to <% if(listTitle==='Home') { %> work <% } else { %> home
+								<% } %>
+								list
+							</button>
+					</a>
+				</div>
+			</div>
+		</main>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
