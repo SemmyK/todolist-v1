@@ -61,8 +61,15 @@ input[type='text']:focus {
 	}
 	#todo {
 		padding: 0;
-		width: 100vw !important;
+		width: 100% !important;
 		display: block;
+		box-sizing: border-box;
+	}
+
+	#todo-form {
+		width: 100% !important;
+		box-sizing: border-box !important;
+		padding: 1em 0 !important;
 	}
 
 	#todo-form span {
@@ -80,7 +87,8 @@ input[type='text']:focus {
 	}
 
 	#todo-form button {
-		width: 100% !important;
+		width: 80% !important;
+		margin: 1em auto !important;
 	}
 	button {
 		width: 90% !important;
