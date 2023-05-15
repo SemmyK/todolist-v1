@@ -38,3 +38,21 @@ input[type='text']:focus {
 	outline: none;
 	box-shadow: inset 0 -3px 0 0 royalblue;
 }
+
+/* style for smaller screens*/
+@media (max-width: 575.98px) {
+	body,
+	main,
+	h1,
+	h2,
+	p,
+	form,
+	div,
+	div.list-group,
+	label {
+		font-size: 1rem;
+		display: block;
+		width: 100vw !important;
+		padding: 1em !important;
+	}
+}
