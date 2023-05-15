@@ -19,6 +19,10 @@ main h1 {
 	height: 20% !important;
 	width: 80% !important;
 }
+
+#todo-form label {
+	height: 100% !important;
+}
 #tasks {
 	width: 80% !important;
 }
