@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const { MongoClient, ServerApiVersion } = require('mongodb')
 const date = require(__dirname + '/getDateString')
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 //connect to atlas DB
 const uri = process.env.MONGO_URI
@@ -20,7 +20,16 @@ const client = new MongoClient(uri, {
 async function run() {
 	try {
 		// Connect the client to the server	(optional starting in v4.7)
-		await client.connect()
+		await client.connect(err => {
+			if (err) {
+				console.error(err)
+				return false
+			}
+			// connection to mongo is successful, listen for requests
+			app.listen(PORT, () => {
+				console.log('listening for requests')
+			})
+		})
 		// Send a ping to confirm a successful connection
 		await client.db('admin').command({ ping: 1 })
 		console.log(
@@ -272,6 +281,6 @@ app.post('/delete', (req, res) => {
 	}
 })
 
-app.listen(port, () => {
-	console.log(`Server running at ${port}`)
-})
+// app.listen(port, () => {
+// 	console.log(`Server running at ${port}`)
+// })
