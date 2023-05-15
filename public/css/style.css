@@ -40,7 +40,7 @@ input[type='text']:focus {
 }
 
 /* style for smaller screens*/
-@media (max-width: 575.98px) {
+@media (max-width: 700px) {
 	body,
 	main,
 	h1,
