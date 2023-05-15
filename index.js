@@ -99,7 +99,7 @@ app.get('/', (req, res) => {
 				console.log(err)
 			})
 	} else {
-		console.log('not getting bd tasks')
+		console.log('not getting DB tasks')
 	}
 })
 
@@ -154,7 +154,7 @@ app.get('/:name', (req, res) => {
 					console.log('does not exist')
 				} else {
 					//show existing list
-					console.log(foundList)
+					
 					res.render('list', {
 						listTitle: foundList.name,
 						dayName: day,
