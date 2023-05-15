@@ -64,6 +64,24 @@ input[type='text']:focus {
 		width: 100vw !important;
 		display: block;
 	}
+
+	#todo-form span {
+		display: inline-block;
+		width: 10%;
+	}
+
+	#todo-form div {
+		width: 80% !important;
+		display: inline-block !important;
+	}
+
+	#todo-form input {
+		width: 100% !important;
+	}
+
+	#todo-form button {
+		width: 100% !important;
+	}
 	button {
 		width: 90% !important;
 		margin: 2em 1em;
